@@ -32,6 +32,21 @@ function deleteCallBack(e){
     showBooks();
 }
 
+function toggleReadCallBack(e){
+    if(e.target.classList.contains("read")){
+        e.target.parentNode.parentNode.children.item(3).textContent="no"
+        e.target.textContent="Mark as read";
+        myLibrary[e.target.parentNode.parentNode.getAttribute("bid")].read=false;
+    }
+    else{
+        e.target.parentNode.parentNode.children.item(3).textContent="yes"
+        e.target.textContent="Mark as not read";
+        myLibrary[e.target.parentNode.parentNode.getAttribute("bid")].read=true;
+    }
+
+    e.target.classList.toggle("read")
+}
+
 function showBook(book,n){
     const cont=document.createElement("tr");
     cont.setAttribute("bid",`${n}`)
@@ -66,6 +81,7 @@ function showBook(book,n){
         cols[3].textContent="no";
         btn2.textContent="Mark as read";
     }
+    btn2.addEventListener("click",toggleReadCallBack)
     cols[5].appendChild(btn2);
 
     bookList.appendChild(cont);
