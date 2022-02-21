@@ -43,5 +43,5 @@ body{
     justify-content: center;
     align-items: center;
     padding: 5px;
-    color:var(--color100)
+    color:var(--color100);
 }
