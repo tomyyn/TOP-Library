@@ -1,0 +1,34 @@
+:root{
+    --color50:  #FFF7ED;
+    --color100: #FFEDD5;
+    --color200: #FED7AA;
+    --color300: #FDBA74;
+    --color400: #FB923C;
+    --color500: #F97316;
+    --color600: #EA580C;
+    --color700: #C2410C;
+    --color800: #9A3412;
+    --color900: #7C2D12;
+
+}
+
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin:0px;
+    border:0px;
+}
+
+.header{
+    height: 50px;
+}
+
+.content{
+    flex-grow: 1;
+}
+
+.footer{
+    height: 30px;
+}
