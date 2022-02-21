@@ -47,15 +47,26 @@ function showBook(book,n){
     cols[0].textContent=book.title;
     cols[1].textContent=book.author;
     cols[2].textContent=book.pages;
-    cols[3].textContent=book.read?"yes":"no";
+    book.read?"yes":"no";
 
     const btn = document.createElement("button");
     btn.classList.add("delButton");
-    
     btn.textContent="X";
     btn.addEventListener("click", deleteCallBack)
     cols[4].appendChild(btn);
     
+    const btn2 = document.createElement("button");
+    btn2.classList.add("readButton");
+    if(book.read){
+        cols[3].textContent="yes";
+        btn2.classList.add("read");
+        btn2.textContent="Mark as not read"
+    }
+    else{
+        cols[3].textContent="no";
+        btn2.textContent="Mark as read";
+    }
+    cols[5].appendChild(btn2);
 
     bookList.appendChild(cont);
 }
