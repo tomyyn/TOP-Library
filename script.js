@@ -1,11 +1,11 @@
 let myLibrary=[];
-const bookList=document.querySelector(".bookList")
+const bookList=document.querySelector(".bookList");
 
 const addNew=document.querySelector(".activateForm");
 const form=document.querySelector("form");
 const cancel=document.querySelector(".formCan");
 const submit=document.querySelector(".formSub");
-
+const inputs=Array.from(document.querySelectorAll("form input"));
 
 function Book(title, author,pages,read){
     this.title=title;
@@ -21,15 +21,17 @@ function Book(title, author,pages,read){
 function addBookToLibrary(title, author,pages,read){
     
     myLibrary.push(new Book(title,author,pages, read));
+    myLibrary.sort();
 }
 
 function showBook(book){
     const cont=document.createElement("div");
     cont.textContent=book.info();
-    bookList.appendChild(cont)
+    bookList.appendChild(cont);
 }
 
 function showBooks(){
+    bookList.textContent="";
     myLibrary.forEach(book=>
         {showBook(book);}
     )
@@ -43,6 +45,10 @@ function addNewCallBack(){
 function hideForm(){
     form.style.display="none";
     addNew.style.display="block";
+    inputs[0].value="";
+    inputs[1].value="";
+    inputs[2].value="";
+    inputs[3].checked=false;
 }
 
 function cancelCallBack(){
@@ -50,6 +56,9 @@ function cancelCallBack(){
 }
 
 function submitCallBack(){
+    addBookToLibrary(inputs[0].value,inputs[1].value,inputs[2].value,inputs[3].checked);
+    showBooks();
+    
     hideForm();
 }
 
