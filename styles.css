@@ -23,6 +23,13 @@ body{
 
 .header{
     height: 50px;
+    background-color: var(--color400);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 30px;
+    padding:20px;
 }
 
 .content{
@@ -31,4 +38,10 @@ body{
 
 .footer{
     height: 30px;
+    background-color: var(--color800);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    color:var(--color100)
 }
