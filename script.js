@@ -21,16 +21,29 @@ function Book(title, author,pages,read){
 function addBookToLibrary(title, author,pages,read){
     
     myLibrary.push(new Book(title,author,pages, read));
-    myLibrary.sort();
+    myLibrary.sort((a,b)=>{
+        return (a.title.toLowerCase()<b.title.toLowerCase())?-1:1    
+    });
+}
+
+function deleteCallBack(e){
+    let id =e.target.parentNode.parentNode.getAttribute("bid");
+    myLibrary.splice(id,1);
+    showBooks();
 }
 
 function showBook(book,n){
     const cont=document.createElement("tr");
+    cont.setAttribute("bid",`${n}`)
     let i, cols=[]
     for(i=0;i<6;i++) {
         cols.push(document.createElement("td"));
         cont.appendChild(cols[i]);
     }
+    cols[3].classList.add("short");
+    cols[4].classList.add("short");
+    cols[5].classList.add("short");
+    
     cols[0].textContent=book.title;
     cols[1].textContent=book.author;
     cols[2].textContent=book.pages;
@@ -38,8 +51,9 @@ function showBook(book,n){
 
     const btn = document.createElement("button");
     btn.classList.add("delButton");
-    btn.setAttribute("bid",`${n}`)
+    
     btn.textContent="X";
+    btn.addEventListener("click", deleteCallBack)
     cols[4].appendChild(btn);
     
 
