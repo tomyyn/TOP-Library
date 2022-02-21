@@ -46,6 +46,10 @@ body{
     display: none;
 }
 
+.alert{
+    display: none;
+}
+
 .bookList{
     background-color: var(--color300);
 }

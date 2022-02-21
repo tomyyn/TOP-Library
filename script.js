@@ -6,6 +6,7 @@ const form=document.querySelector("form");
 const cancel=document.querySelector(".formCan");
 const submit=document.querySelector(".formSub");
 const inputs=Array.from(document.querySelectorAll("form input"));
+const alerts=Array.from(document.querySelectorAll(".alert"))
 
 function Book(title, author,pages,read){
     this.title=title;
@@ -117,10 +118,32 @@ function cancelCallBack(){
 }
 
 function submitCallBack(){
-    addBookToLibrary(inputs[0].value,inputs[1].value,inputs[2].value,inputs[3].checked);
-    showBooks();
-    
-    hideForm();
+    let validate = true;
+    let i;
+    for(i=0;i<2;i++){
+        if(inputs[i].value == ""){
+            validate=false;
+            alerts[i].style.display="block"
+        }
+        else{
+            alerts[i].style.display="none"
+        }
+    }
+    let p=inputs[2].value;
+    console.log(p)
+    if(p==""||p <=0 ){
+        validate=false;
+        alerts[2].style.display="block";
+    }
+    else{
+        alerts[2].style.display="none";
+    }
+
+    if(validate){
+        addBookToLibrary(inputs[0].value,inputs[1].value,inputs[2].value,inputs[3].checked);
+        showBooks();
+        hideForm();
+    }  
 }
 
 addNew.addEventListener("click",addNewCallBack);
