@@ -1,5 +1,5 @@
 let myLibrary=[];
-const bookList=document.querySelector(".bookList");
+const bookList=document.querySelector("table");
 
 const addNew=document.querySelector(".activateForm");
 const form=document.querySelector("form");
@@ -24,16 +24,36 @@ function addBookToLibrary(title, author,pages,read){
     myLibrary.sort();
 }
 
-function showBook(book){
-    const cont=document.createElement("div");
-    cont.textContent=book.info();
+function showBook(book,n){
+    const cont=document.createElement("tr");
+    let i, cols=[]
+    for(i=0;i<6;i++) {
+        cols.push(document.createElement("td"));
+        cont.appendChild(cols[i]);
+    }
+    cols[0].textContent=book.title;
+    cols[1].textContent=book.author;
+    cols[2].textContent=book.pages;
+    cols[3].textContent=book.read?"yes":"no";
+
+    const btn = document.createElement("button");
+    btn.classList.add("delButton");
+    btn.setAttribute("bid",`${n}`)
+    btn.textContent="X";
+    cols[4].appendChild(btn);
+    
+
     bookList.appendChild(cont);
 }
 
 function showBooks(){
-    bookList.textContent="";
+    let i=0;
+    while (bookList.childNodes.length > 2) {
+        bookList.removeChild(bookList.lastChild);
+    }
     myLibrary.forEach(book=>
-        {showBook(book);}
+        {showBook(book,i);
+        i++;}
     )
 }
 
