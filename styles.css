@@ -34,6 +34,16 @@ body{
 
 .content{
     flex-grow: 1;
+    display: grid;
+    grid-template-columns: 30vw 70vw;
+}
+
+.bookInput{
+    background-color: var(--color900);
+}
+
+.bookList{
+    background-color: var(--color300);
 }
 
 .footer{
