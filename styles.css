@@ -42,6 +42,10 @@ body{
     background-color: var(--color900);
 }
 
+.bookForm{
+    display: none;
+}
+
 .bookList{
     background-color: var(--color300);
 }

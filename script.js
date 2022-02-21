@@ -1,6 +1,9 @@
 let myLibrary=[];
 const bookList=document.querySelector(".bookList")
 
+const addNew=document.querySelector(".activateForm");
+const form=document.querySelector("form");
+
 
 function Book(title, author,pages,read){
     this.title=title;
@@ -21,7 +24,6 @@ function addBookToLibrary(title, author,pages,read){
 function showBook(book){
     const cont=document.createElement("div");
     cont.textContent=book.info();
-    console.log(book.info())
     bookList.appendChild(cont)
 }
 
@@ -31,6 +33,12 @@ function showBooks(){
     )
 }
 
+function addNewCallBack(){
+    addNew.style.display="none";
+    form.style.display="block";
+}
+
+addNew.addEventListener("click",addNewCallBack)
 
 addBookToLibrary("SampleTextOfASample", "Sigman", 600, true)
 showBooks();
